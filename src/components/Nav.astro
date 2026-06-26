@@ -1,0 +1,80 @@
+---
+import { site } from '../data/site';
+import Icon from './Icon.astro';
+
+const [firstName, ...restName] = site.name.split(' ');
+const lastName = restName.join(' ');
+---
+
+<header class="nav">
+  <div class="nav__inner container">
+    <a href="#top" class="brand" aria-label={`${site.name} — top`}
+      >{firstName} <span class="brand__last">{lastName}</span></a
+    >
+    <div class="nav__socials">
+      {
+        site.socials.map((s) => (
+          <a
+            href={s.href}
+            class="nav__icon"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={s.label}
+          >
+            <Icon name={s.icon} size={18} />
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.6rem;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .brand__last {
+    color: var(--c-coral);
+    transition: color 0.15s ease;
+  }
+  .brand:hover .brand__last {
+    color: var(--ink);
+  }
+  .nav__socials {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .nav__icon {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--paper-2);
+    color: var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: transform 0.08s ease, box-shadow 0.08s ease, background 0.15s ease;
+  }
+  .nav__icon:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--ink);
+    background: var(--accent);
+    color: #fff;
+  }
+  .nav__icon:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--ink);
+  }
+</style>

@@ -1,0 +1,56 @@
+---
+import { site } from '../data/site';
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="footer__made">
+      Made with ☕ + ❤️ in {site.location.split(',')[0]}.
+    </p>
+    <nav class="footer__links" aria-label="Elsewhere">
+      {
+        site.socials.map((s) => (
+          <a href={s.href} target="_blank" rel="noopener noreferrer">
+            {s.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 2px dashed var(--line-soft);
+    padding-block: 2.25rem;
+    margin-top: 2rem;
+  }
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .footer__made {
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .footer__links {
+    display: flex;
+    gap: 1.1rem;
+  }
+  .footer__links a {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 3px;
+  }
+  .footer__links a:hover {
+    color: var(--accent);
+  }
+</style>

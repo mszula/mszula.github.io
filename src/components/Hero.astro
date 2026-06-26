@@ -1,0 +1,187 @@
+---
+import { site } from '../data/site';
+const linkedin = site.socials.find((s) => s.icon === 'linkedin');
+const github = site.socials.find((s) => s.icon === 'github');
+---
+
+<section id="top" class="hero section">
+  <!-- decorative pixel doodads -->
+  <span class="doodad doodad--1" style="color: var(--c-yellow)" aria-hidden="true">
+    <svg viewBox="0 0 12 12" fill="currentColor"
+      ><rect x="5" y="0" width="2" height="12"></rect><rect x="0" y="5" width="12" height="2"
+      ></rect><rect x="2" y="2" width="2" height="2"></rect><rect x="8" y="2" width="2" height="2"
+      ></rect><rect x="2" y="8" width="2" height="2"></rect><rect x="8" y="8" width="2" height="2"
+      ></rect></svg
+    >
+  </span>
+  <span class="doodad doodad--2" style="color: var(--c-coral)" aria-hidden="true">
+    <svg viewBox="0 0 14 13" fill="currentColor"
+      ><rect x="2" y="1" width="3" height="2"></rect><rect x="9" y="1" width="3" height="2"
+      ></rect><rect x="1" y="3" width="12" height="3"></rect><rect x="2" y="6" width="10" height="2"
+      ></rect><rect x="3" y="8" width="8" height="2"></rect><rect x="5" y="10" width="4" height="2"
+      ></rect></svg
+    >
+  </span>
+  <span class="doodad doodad--3" style="color: var(--c-blue)" aria-hidden="true">
+    <svg viewBox="0 0 12 12" fill="currentColor"
+      ><rect x="5" y="0" width="2" height="12"></rect><rect x="0" y="5" width="12" height="2"
+      ></rect></svg
+    >
+  </span>
+
+  <div class="container hero__inner">
+    <span class="pixel-label reveal"><span class="star">✦</span> hello, world</span>
+
+    <h1 class="hero__title reveal" style="--reveal-delay: 60ms">
+      Hi, I'm Mateusz <span class="wave">👋</span>
+    </h1>
+
+    <p class="hero__lede lede reveal" style="--reveal-delay: 120ms">
+      I build odd little things — a sorting-algorithm visualiser, a from-scratch
+      remake of a 1998 adventure game, and the occasional low-level rabbit hole.
+      Full-stack by day, tinkerer by night.
+    </p>
+
+    <p class="hero__note reveal" style="--reveal-delay: 180ms">
+      Looking for the CV-and-job-titles version? That one lives on{' '}
+      <a href={linkedin?.href} target="_blank" rel="noopener noreferrer"
+        >LinkedIn ↗</a
+      >.
+    </p>
+
+    <div class="hero__cta reveal" style="--reveal-delay: 240ms">
+      <a href="#projects" class="btn btn--primary">See the projects ↓</a>
+      <a href={github?.href} class="btn" target="_blank" rel="noopener noreferrer"
+        >Browse GitHub ↗</a
+      >
+    </div>
+
+    <span class="hero__loc reveal" style="--reveal-delay: 300ms"
+      >📍 {site.location}</span
+    >
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: clamp(2.5rem, 7vh, 4.5rem);
+    padding-bottom: clamp(2.5rem, 7vh, 4rem);
+    overflow: hidden;
+  }
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero__title {
+    font-size: clamp(2.6rem, 8vw, 4.6rem);
+    margin: 1.4rem 0 1.3rem;
+    max-width: 16ch;
+  }
+  .wave {
+    display: inline-block;
+    transform-origin: 70% 70%;
+    animation: wave 2.6s ease-in-out infinite;
+  }
+  @keyframes wave {
+    0%,
+    60%,
+    100% {
+      transform: rotate(0deg);
+    }
+    10%,
+    30% {
+      transform: rotate(14deg);
+    }
+    20% {
+      transform: rotate(-8deg);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .wave {
+      animation: none;
+    }
+  }
+
+  .hero__lede {
+    max-width: 50ch;
+  }
+  .hero__note {
+    margin-top: 1.1rem;
+    color: var(--ink-faint);
+    font-size: 0.98rem;
+  }
+  .hero__note a {
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 3px;
+  }
+  .hero__note a:hover {
+    color: var(--accent);
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 2rem;
+  }
+
+  .hero__loc {
+    display: inline-block;
+    margin-top: 1.8rem;
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  /* doodads */
+  .doodad {
+    position: absolute;
+    z-index: 0;
+    width: 2rem;
+    pointer-events: none;
+    animation: float 6s ease-in-out infinite;
+  }
+  .doodad--1 {
+    top: 14%;
+    right: 12%;
+    width: 2.5rem;
+    transform: rotate(8deg);
+  }
+  .doodad--2 {
+    top: 52%;
+    right: 22%;
+    width: 2.2rem;
+    animation-delay: -2s;
+  }
+  .doodad--3 {
+    bottom: 16%;
+    left: 6%;
+    width: 1.7rem;
+    animation-delay: -4s;
+  }
+  @keyframes float {
+    0%,
+    100% {
+      translate: 0 0;
+    }
+    50% {
+      translate: 0 -10px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .doodad {
+      animation: none;
+    }
+  }
+  @media (max-width: 720px) {
+    .doodad--1,
+    .doodad--2 {
+      display: none;
+    }
+  }
+</style>
