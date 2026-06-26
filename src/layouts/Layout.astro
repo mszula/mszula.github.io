@@ -61,6 +61,13 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
         sameAs: site.socials.map((s) => s.href),
       })}
     />
+
+    <!-- Umami analytics (self-hosted) — same property as the wacki / visual-sorting sites -->
+    <script
+      is:inline
+      defer
+      src="https://bobr.szula.top/tag.js"
+      data-website-id="bf5d6c23-719c-4412-a957-eb05e36cfbc3"></script>
   </head>
 
   <body>
